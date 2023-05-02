@@ -1,0 +1,36 @@
+.lesson-icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 50%;
+    height: 150px;
+    padding: 4px;
+}
+
+.lesson-icon__item {
+    width: 99%;
+    height: 140px;
+    padding: 16px 4px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    border: 1px #000 solid;
+    border-radius: 5px;
+
+    text-align: center;
+    h2 {
+        font-size: 1.5rem;
+        color: #000;
+    }
+
+    &:hover {
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); 
+    }
+
+}
+
+// box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2); 

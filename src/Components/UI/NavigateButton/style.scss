@@ -1,0 +1,16 @@
+.button-general {
+    height: 30px;
+    width: 60px;
+
+    color: #fff;
+
+    background-color: #3070fa;
+    border-radius: 10px;
+
+    &:hover {
+        background-color: #0051ff; 
+    }
+    &:active {
+        background-color: #0099ff; 
+    }
+}

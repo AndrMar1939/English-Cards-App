@@ -1,0 +1,24 @@
+.header {
+    width: 100%;
+    padding: 10px;
+
+    display: flex;
+    justify-content: space-around;
+
+    background-color: rgba(0, 132, 255, 0.6);
+    border-radius: 5px 5px 0 0;
+
+    h1 {
+        width: 300px;
+        text-align: center;
+        font-size: 2rem;
+        color: #ffffff;
+    }
+    
+    button {
+        width: 50px;    
+        font-size: 1.2rem;
+        background-color: #ffffff;
+        border-radius: 4px;
+    }
+}
