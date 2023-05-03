@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
-import { setLesson } from "../../Store/slices/cardsSlice";
+import { setLesson, setCardsInLesson } from "../../Store/slices/cardsSlice";
 import { getLessons, getActiveLesson } from "../../Store/selectors";
 import LessonsBox from "../../Components/LessonsBox";
 import Card from "../../Components/Card";
@@ -13,21 +13,23 @@ const LessonPage = () => {
     const allLessons = useSelector(getLessons);
     const activeLesson = useSelector(getActiveLesson);
 
-    // define current lesson cards
+    // define current lesson cards, if we reload the page
     const currentLesson = allLessons.filter(
         (item) => item.url === activeLesson
     );
-    let cards;
-    if (activeLesson !== "/") {
-        cards = currentLesson[0].cards;
-    }
 
-    // use effect
+    const cards = currentLesson[0]?.cards;
+    dispatch(setCardsInLesson(cards?.length));
+
+    // use effect for reload page
 
     useEffect(() => {
         if (activeLesson === "/") {
             console.log("use effect worked");
-            dispatch(setLesson(pathname.slice(1)));
+            dispatch(setLesson(pathname.split('/')[2]));
+        }
+        return ()=> {
+            dispatch(setCardsInLesson(0))
         }
     }, []);
 

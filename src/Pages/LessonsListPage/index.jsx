@@ -1,4 +1,3 @@
-import { useMemo } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -15,7 +14,7 @@ const LessonsListPage = () => {
     // handler button click
     const handleToLessons = (path) => {
         dispatch(setLesson(path));
-        navigate("/" + path);
+        navigate("/lessons/" + path);
     };
 
     return (

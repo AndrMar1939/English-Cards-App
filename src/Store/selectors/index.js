@@ -4,4 +4,6 @@ const getActiveLesson = (state=>state.cardsStore.activeLesson);
 
 const getLessons = (state=>state.cardsStore.lessons);
 
-export {getLoading, getActiveLesson, getLessons};
+const getCardsInLessons = (state=>state.cardsStore.cardsInLesson);
+
+export {getLoading, getActiveLesson, getLessons, getCardsInLessons};

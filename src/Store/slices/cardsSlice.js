@@ -6,23 +6,15 @@ const initialState = {
     user: localStorage.getItem('user'),
     loading: false,
     activeLesson: '/',
+    cardsInLesson: 0,
 }
 
 // local storage middleware
 
-// export const authMiddleware = (store) => (next) => (action) => {
+// export const itemsMiddleware = (store) => (next) => (action) => {
 //     switch (action.type) {
-//         case 'getCurrentUser/logout':
-//             localStorage.removeItem('token');
-//             localStorage.removeItem('isAuth');
-//             localStorage.removeItem('userLogin');
-//             break;
-//         case 'getCurrentUser/login/fulfilled':
-//             localStorage.setItem('token', action.payload.access_token);
-//             localStorage.setItem('isAuth', true);
-//             break;
-//         case 'getCurrentUser/get/fulfilled':
-//             localStorage.setItem('userLogin', action.payload.login);
+//         case 'lessons/setLocal':
+//             localStorage.setItem('items', action.payload);
 //             break;
 //         default:
 //             break;
@@ -33,7 +25,7 @@ const initialState = {
 // create slice
 
 const cardsStore = createSlice({
-    name: "cardsForUser",
+    name: 'lessons',
     initialState,
     reducers: {
         isLoading: (state) => {
@@ -45,6 +37,12 @@ const cardsStore = createSlice({
         setLesson: (state, action) => {
             state.activeLesson = action.payload;
         },
+        setLocal: (state, action) => {
+            state.user = 'current user';
+        },
+        setCardsInLesson: (state, action) => {
+            state.cardsInLesson = action.payload;
+        },
     }
 })
 
@@ -55,5 +53,7 @@ export default reducer;
 export const {
     isLoading,
     isNotLoading,
-    setLesson
+    setLesson,
+    setLocal,
+    setCardsInLesson,
 } = actions;

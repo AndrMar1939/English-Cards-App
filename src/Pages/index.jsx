@@ -19,7 +19,7 @@ function Application() {
             <Routes path="/">
                 <Route index element={<StartPage/>}/>
                 <Route path="lessons" element={<LessonsListPage/>}/>
-                <Route path=":lesson" element={<LessonPage/>}/>
+                <Route path="lessons/:lesson" element={<LessonPage/>}/>
                 <Route path="*" element={<Navigate to="/"/>}/>
             </Routes>
         </Wrapper>
