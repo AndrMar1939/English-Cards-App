@@ -17,7 +17,6 @@ const LessonPage = () => {
     const currentLesson = allLessons.filter(
         (item) => item.url === activeLesson
     );
-
     const cards = currentLesson[0]?.cards;
     dispatch(setCardsInLesson(cards?.length));
 
