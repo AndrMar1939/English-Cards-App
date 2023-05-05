@@ -2,52 +2,51 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
 
-import { setLesson, setCardsInLesson } from "../../Store/slices/cardsSlice";
-import { getLessons, getActiveLesson } from "../../Store/selectors";
+import {
+    setCardsInLesson,
+    getCardsThunk,
+} from "../../Store/slices/cardsSlice";
+import {
+    getLoading,
+    getApiError,
+    getCards,
+} from "../../Store/selectors";
 import LessonsBox from "../../Components/LessonsBox";
 import Card from "../../Components/Card";
 
 const LessonPage = () => {
     const dispatch = useDispatch();
     const { pathname } = useLocation();
-    const allLessons = useSelector(getLessons);
-    const activeLesson = useSelector(getActiveLesson);
+    const a = useLocation();
+    const loading = useSelector(getLoading);
+    const error = useSelector(getApiError);
+    const cards = useSelector(getCards);
 
-    // define current lesson cards, if we reload the page
-    const currentLesson = allLessons.filter(
-        (item) => item.url === activeLesson
-    );
-    const cards = currentLesson[0]?.cards;
-    dispatch(setCardsInLesson(cards?.length));
+    console.log(a);
 
     // use effect for reload page
 
     useEffect(() => {
-        if (activeLesson === "/") {
-            console.log("use effect worked");
-            dispatch(setLesson(pathname.split('/')[2]));
-        }
-        return ()=> {
-            dispatch(setCardsInLesson(0))
-        }
+        dispatch(getCardsThunk(pathname.split("/")[2]));
+
+        return () => {
+            dispatch(setCardsInLesson(0));
+        };
     }, []);
 
+    if (loading) {
+        return <h1>...loading</h1>
+    }
 
-    // render
-    if (!cards) {
-        return
+    if (error) {
+        return <h1>{error.message}</h1>
     }
 
     // main render
     return (
         <LessonsBox>
-            {cards.map((item, index) => {
-                return (
-                    <Card
-                        key={index}
-                        item={item}
-                    />
-                );
+            {cards?.map((item, index) => {
+                return <Card key={index} item={item} />;
             })}
         </LessonsBox>
     );

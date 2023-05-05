@@ -1,31 +1,46 @@
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import { setLesson } from "../../Store/slices/cardsSlice";
-import { getLessons} from "../../Store/selectors";
+
+import {getApiInfoThunk } from "../../Store/slices/cardsSlice";
+import { getApiInfo, getLoading} from "../../Store/selectors";
 import LessonsBox from "../../Components/LessonsBox";
 import LessonIcon from "../../Components/LessonIcon";
 
 const LessonsListPage = () => {
-    const lessons = useSelector(getLessons);
+    const loading = useSelector(getLoading);
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
+    // define lessons titles
+    const apiInfo = useSelector(getApiInfo);
+    let lessonsTitles;
+    if (!!apiInfo) {
+        lessonsTitles = Object.keys(apiInfo.definitions);
+    }
+
+    useEffect(()=>{
+        dispatch(getApiInfoThunk('/'))
+    }, [])
+
     // handler button click
     const handleToLessons = (path) => {
-        dispatch(setLesson(path));
         navigate("/lessons/" + path);
     };
 
+    if (loading) {
+        return <h1>...loading</h1>
+    }
     return (
         <LessonsBox>
-            {lessons.map((item, index) => {
+            {lessonsTitles?.map((item, index) => {
                 return (
                     <LessonIcon
                         key={index}
-                        category={item.name}
+                        category={item}
                         handleToLessons={handleToLessons}
-                        path={item.url}
+                        path={item}
                     />
                 );
             })}

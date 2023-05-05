@@ -1,12 +1,13 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { items } from '../ItemsCards/items';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { getApi } from '../../services/API';
 
 const initialState = {
-    lessons: items,
-    user: localStorage.getItem('user'),
-    loading: false,
+    cards: [],
+    apiInfo: null,
     activeLesson: '/',
     cardsInLesson: 0,
+    loading: false,
+    apiError: null,
 }
 
 // local storage middleware
@@ -22,6 +23,23 @@ const initialState = {
 //     return next(action);
 // };
 
+// thunk
+
+export const getCardsThunk = createAsyncThunk(
+    'getCards/get',
+    (category) => {
+        return getApi(category);
+    }
+);
+export const getApiInfoThunk = createAsyncThunk(
+    'getApiInfo/get',
+    (category) => {
+        return  getApi(category);
+    }
+);
+
+
+
 // create slice
 
 const cardsStore = createSlice({
@@ -34,15 +52,38 @@ const cardsStore = createSlice({
         isNotLoading: (state) => {
             state.loading = false;
         },
-        setLesson: (state, action) => {
-            state.activeLesson = action.payload;
-        },
-        setLocal: (state, action) => {
-            state.user = 'current user';
-        },
         setCardsInLesson: (state, action) => {
             state.cardsInLesson = action.payload;
         },
+    },
+    extraReducers: (builder) => {
+        builder
+            .addCase(getCardsThunk.pending, (state)=>{
+                state.loading = true;
+            })
+            .addCase(getCardsThunk.fulfilled, (state, action)=>{
+                state.loading = false;
+                state.apiError = action.payload.error;
+                state.cards = action.payload.data;
+
+            })
+            .addCase(getCardsThunk.rejected, (state)=>{
+                state.loading = false;
+            })
+            .addCase(getApiInfoThunk.pending, (state)=>{
+                state.loading = true;
+            })
+            .addCase(getApiInfoThunk.fulfilled, (state, action)=>{
+                state.loading = false;
+                state.apiError = action.payload.error;
+                state.apiInfo = action.payload.data;
+
+            })
+            .addCase(getApiInfoThunk.rejected, (state)=>{
+                state.loading = false;
+
+            })
+            .addDefaultCase(() => { })
     }
 })
 
@@ -53,7 +94,5 @@ export default reducer;
 export const {
     isLoading,
     isNotLoading,
-    setLesson,
-    setLocal,
     setCardsInLesson,
 } = actions;

@@ -12,7 +12,6 @@ function Application() {
     const dispatch = useDispatch();
     const loading = useSelector(getLoading);
 
-
     return (
         <Wrapper>
             <Header/>

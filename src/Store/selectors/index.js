@@ -1,9 +1,12 @@
 const getLoading = (state=>state.cardsStore.loading);
 
-const getActiveLesson = (state=>state.cardsStore.activeLesson);
+const getApiInfo = (state=>state.cardsStore.apiInfo);
 
-const getLessons = (state=>state.cardsStore.lessons);
+const getApiError = (state=>state.cardsStore.apiError);
 
 const getCardsInLessons = (state=>state.cardsStore.cardsInLesson);
 
-export {getLoading, getActiveLesson, getLessons, getCardsInLessons};
+const getCards = (state=>state.cardsStore.cards);
+
+
+export {getLoading, getApiInfo, getApiError, getCardsInLessons, getCards};
