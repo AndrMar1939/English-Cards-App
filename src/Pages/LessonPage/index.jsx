@@ -17,18 +17,15 @@ import Card from "../../Components/Card";
 const LessonPage = () => {
     const dispatch = useDispatch();
     const { pathname } = useLocation();
-    const a = useLocation();
     const loading = useSelector(getLoading);
     const error = useSelector(getApiError);
     const cards = useSelector(getCards);
 
-    console.log(a);
 
     // use effect for reload page
 
     useEffect(() => {
         dispatch(getCardsThunk(pathname.split("/")[2]));
-
         return () => {
             dispatch(setCardsInLesson(0));
         };

@@ -25,6 +25,8 @@ const initialState = {
 
 // thunk
 
+console.log(getApi)
+
 export const getCardsThunk = createAsyncThunk(
     'getCards/get',
     (category) => {
@@ -65,6 +67,7 @@ const cardsStore = createSlice({
                 state.loading = false;
                 state.apiError = action.payload.error;
                 state.cards = action.payload.data;
+                state.cardsInLesson = action.payload.data.length;
 
             })
             .addCase(getCardsThunk.rejected, (state)=>{
