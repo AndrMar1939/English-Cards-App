@@ -25,7 +25,6 @@ const initialState = {
 
 // thunk
 
-console.log(getApi)
 
 export const getCardsThunk = createAsyncThunk(
     'getCards/get',
