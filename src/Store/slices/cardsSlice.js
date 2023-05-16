@@ -4,7 +4,7 @@ import { getApi } from '../../services/API';
 const initialState = {
     cards: [],
     apiInfo: null,
-    activeLesson: '/',
+    lessonsTitles: {},
     cardsInLesson: 0,
     loading: false,
     apiError: null,
@@ -38,6 +38,12 @@ export const getApiInfoThunk = createAsyncThunk(
         return  getApi(category);
     }
 );
+export const getLessonsTitlesThunk = createAsyncThunk(
+    'getLessonsTitles/get',
+    (category) => {
+        return  getApi(category);
+    }
+);
 
 
 
@@ -59,6 +65,7 @@ const cardsStore = createSlice({
     },
     extraReducers: (builder) => {
         builder
+            // cards
             .addCase(getCardsThunk.pending, (state)=>{
                 state.loading = true;
             })
@@ -72,6 +79,7 @@ const cardsStore = createSlice({
             .addCase(getCardsThunk.rejected, (state)=>{
                 state.loading = false;
             })
+            // api info
             .addCase(getApiInfoThunk.pending, (state)=>{
                 state.loading = true;
             })
@@ -85,6 +93,21 @@ const cardsStore = createSlice({
                 state.loading = false;
 
             })
+            // lessons title
+            .addCase(getLessonsTitlesThunk.pending, (state)=>{
+                state.loading = true;
+            })
+            .addCase(getLessonsTitlesThunk.fulfilled, (state, action)=>{
+                state.loading = false;
+                state.apiError = action.payload.error;
+                state.lessonsTitles = action.payload.data.definitions;
+
+            })
+            .addCase(getLessonsTitlesThunk.rejected, (state)=>{
+                state.loading = false;
+
+            })
+            // default
             .addDefaultCase(() => { })
     }
 })

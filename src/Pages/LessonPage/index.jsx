@@ -13,6 +13,7 @@ import {
 } from "../../Store/selectors";
 import LessonsBox from "../../Components/LessonsBox";
 import Card from "../../Components/Card";
+import Spinner from "../../Components/UI/Spinner";
 
 const LessonPage = () => {
     const dispatch = useDispatch();
@@ -32,7 +33,7 @@ const LessonPage = () => {
     }, []);
 
     if (loading) {
-        return <h1>...loading</h1>
+        return <Spinner/>
     }
 
     if (error) {

@@ -3,25 +3,27 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 
-import {getApiInfoThunk } from "../../Store/slices/cardsSlice";
-import { getApiInfo, getLoading} from "../../Store/selectors";
+import {getLessonsTitlesThunk} from "../../Store/slices/cardsSlice";
+import { getLoading, getLessonsTitles} from "../../Store/selectors";
 import LessonsBox from "../../Components/LessonsBox";
 import LessonIcon from "../../Components/LessonIcon";
+import Spinner from "../../Components/UI/Spinner";
 
 const LessonsListPage = () => {
     const loading = useSelector(getLoading);
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    // define lessons titles
-    const apiInfo = useSelector(getApiInfo);
-    let lessonsTitles;
-    if (!!apiInfo) {
-        lessonsTitles = Object.keys(apiInfo.definitions);
-    }
+    // define lessons titles like an array
+    const lessonsTitlesObj = useSelector(getLessonsTitles);
+    const lessonsTitles = Object.keys(lessonsTitlesObj);
+
 
     useEffect(()=>{
-        dispatch(getApiInfoThunk('/'))
+        if (lessonsTitles.length === 0) {
+            dispatch(getLessonsTitlesThunk('/'));
+        }
+        
     }, [])
 
     // handler button click
@@ -30,7 +32,7 @@ const LessonsListPage = () => {
     };
 
     if (loading) {
-        return <h1>...loading</h1>
+        return <Spinner/>
     }
     return (
         <LessonsBox>

@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "npm run build && wrangler pages publish ./dist --project-name my_project_name"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
@@ -20,7 +21,8 @@
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.11.0",
     "sass": "^1.62.1",
-    "serve": "^14.2.0"
+    "serve": "^14.2.0",
+    "wrangler": "^2.20.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",
