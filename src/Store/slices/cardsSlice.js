@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { getApi } from '../../services/API';
+import { apiSupaBase } from '../../services/api';
 
 const initialState = {
     cards: [],
@@ -29,19 +29,19 @@ const initialState = {
 export const getCardsThunk = createAsyncThunk(
     'getCards/get',
     (category) => {
-        return getApi(category);
+        return apiSupaBase(category);
     }
 );
 export const getApiInfoThunk = createAsyncThunk(
     'getApiInfo/get',
     (category) => {
-        return  getApi(category);
+        return  apiSupaBase(category);
     }
 );
 export const getLessonsTitlesThunk = createAsyncThunk(
     'getLessonsTitles/get',
     (category) => {
-        return  getApi(category);
+        return  apiSupaBase(category);
     }
 );
 

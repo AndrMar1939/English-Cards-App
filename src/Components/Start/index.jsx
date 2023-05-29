@@ -1,16 +1,18 @@
 import { NavLink } from "react-router-dom";
 
-
+import ArrowRight from "../UI/ArrowRight";
 import "./style.scss";
-
 
 const Start = () => {
     return (
         <main className="main">
-            <NavLink className="main__link" to={"lessons"}>Choose the lesson</NavLink>
+            <div className="main__box">
+                <NavLink  to={"lessons"}>
+                    <ArrowRight/>
+                </NavLink>
+            </div>
         </main>
     );
 };
-
 
 export default Start;

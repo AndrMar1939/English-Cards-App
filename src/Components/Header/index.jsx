@@ -1,41 +1,46 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { getCardsInLessons } from "../../Store/selectors";
+
 import "./style.scss";
-import IconEng from "../UI/IconEng";
 
 const Header = () => {
     const { pathname } = useLocation();
-    const headerText = pathname.split(`/`);
+
     const navigation = useNavigate();
     const cardsNumber = useSelector(getCardsInLessons);
 
-    // calculating cards in lesson
-    const cardsCounter = cardsNumber ? (
-        <h2>{cardsNumber} cards</h2>
-    ) : (
-        <IconEng />
-    );
+    // calculating cards in lesson and button
+    const cardsCounter = cardsNumber ? <h2>{cardsNumber} cards</h2> : null;
+
+    const button =
+        pathname === "/lessons" ? null : (
+            <button
+                onClick={() => {
+                    navigation("/lessons");
+                }}
+            >
+                <img src="/assets/arrow-left.png" alt="arrow back" />
+            </button>
+        );
+
+    // test header
+    const arr = pathname.split(`/`);
+    const text = arr[arr.length - 1];
+    const headerText =
+        text[0]?.toUpperCase() + text?.split("_").join(" ").slice(1);
 
     // render
     return (
-        <header className="header">
-            {pathname === "/" ? (
-                <h1>get started</h1>
-            ) : (
-                <>
+        <>
+            {pathname === "/" ? null : (
+                <header className="header">
                     {cardsCounter}
-                    <h1>{headerText[headerText.length - 1]}</h1>{" "}
-                    <button
-                        onClick={() => {
-                            navigation(-1);
-                        }}
-                    >
-                        back
-                    </button>{" "}
-                </>
+                    <h1>{headerText}</h1>
+                    {button}
+                </header>
             )}
-        </header>
+        </>
     );
 };
 
