@@ -6,6 +6,7 @@ const initialState = {
     apiInfo: null,
     lessonsTitles: {},
     cardsInLesson: 0,
+    lessonMode: 'idle',
     loading: false,
     apiError: null,
 }
@@ -61,6 +62,9 @@ const cardsStore = createSlice({
         },
         setCardsInLesson: (state, action) => {
             state.cardsInLesson = action.payload;
+        },
+        setLessonMode: (state, action) => {
+            state.lessonMode = action.payload;
         },
     },
     extraReducers: (builder) => {
@@ -120,4 +124,5 @@ export const {
     isLoading,
     isNotLoading,
     setCardsInLesson,
+    setLessonMode,
 } = actions;

@@ -6,6 +6,7 @@ import "./style.scss";
 const Start = () => {
     return (
         <main className="main">
+            <h1>English for travelers</h1>
             <div className="main__box">
                 <NavLink  to={"lessons"}>
                     <ArrowRight/>

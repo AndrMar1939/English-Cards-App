@@ -3,7 +3,7 @@ import { useState } from "react";
 import "./style.scss";
 import NavigateButton from "../UI/NavigateButton";
 
-const LessonIcon = ({ category, handleToLessons, path, ...props }) => {
+const LessonIcon = ({ category, handleToLessons, handleToRepetition, path, ...props }) => {
     const [active, setActive] = useState(false);
 
     const handleActive = () => {
@@ -23,8 +23,8 @@ const LessonIcon = ({ category, handleToLessons, path, ...props }) => {
                 <h2>{text}</h2>
                 {active && (
                     <div className='lesson-icon__btn-box'>
-                        <NavigateButton className={`lesson-icon__btn ${active ? "active" : ""}`} handler={handleToLessons} path={path}>
-                            Learn
+                        <NavigateButton className={`lesson-icon__btn ${active ? "active" : ""}`} handler={handleToRepetition} path={path}>
+                            Repetition
                         </NavigateButton>
                         <NavigateButton handler={handleToLessons} path={path}>
                             Learn

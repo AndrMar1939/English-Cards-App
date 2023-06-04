@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 
-import {getLessonsTitlesThunk} from "../../Store/slices/cardsSlice";
+import {getLessonsTitlesThunk, setLessonMode} from "../../Store/slices/cardsSlice";
 import { getLoading, getLessonsTitles} from "../../Store/selectors";
 import LessonsBox from "../../Components/LessonsBox";
 import LessonIcon from "../../Components/LessonIcon";
@@ -29,7 +29,13 @@ const LessonsListPage = () => {
     // handler button click
     const handleToLessons = (path) => {
         navigate("/lessons/" + path);
+        dispatch(setLessonMode('idle'))
     };
+    const handleToRepetition = (path) => {
+        navigate("/lessons/" + path);
+        dispatch(setLessonMode('repetition'))
+    };
+
 
     if (loading) {
         return <Spinner/>
@@ -42,6 +48,7 @@ const LessonsListPage = () => {
                         key={index}
                         category={item}
                         handleToLessons={handleToLessons}
+                        handleToRepetition={handleToRepetition}
                         path={item}
                     />
                 );

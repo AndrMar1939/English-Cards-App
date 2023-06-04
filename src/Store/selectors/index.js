@@ -10,7 +10,9 @@ const getCardsInLessons = (state=>state.cardsStore.cardsInLesson);
 
 const getCards = (state=>state.cardsStore.cards);
 
+const getLessonMode = (state=>state.cardsStore.lessonMode);
 
 
 
-export {getLoading, getApiInfo, getApiError, getCardsInLessons, getCards, getLessonsTitles};
+
+export {getLoading, getApiInfo, getApiError, getCardsInLessons, getCards, getLessonsTitles, getLessonMode};
