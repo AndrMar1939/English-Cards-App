@@ -35,7 +35,7 @@ export const getLessonsTitlesThunk = createAsyncThunk(
 
 // create slice
 
-const cardsStore = createSlice({
+const cardsSlice = createSlice({
     name: 'lessons',
     initialState,
     reducers: {
@@ -98,7 +98,7 @@ const cardsStore = createSlice({
     }
 })
 
-const { actions, reducer } = cardsStore;
+const { actions, reducer } = cardsSlice;
 
 export default reducer;
 

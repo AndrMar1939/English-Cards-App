@@ -7,15 +7,15 @@
     min-height: 60px;
     padding: 10px;
 
-    color: #000000;
+    color: var(--text-color);
 
     display: flex;
     justify-content: space-around;
     align-items: center;
 
 
-    background: linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c);
-    border-bottom: double 4px #2e312c;
+    background: var(--header-gradient);
+    border-bottom: double 4px var(--header-bottom);
 
     h1 {
         flex-grow: 1;
@@ -31,11 +31,16 @@
     button {
         width: 40px;  
         height: 40px;   
-        background: none    ;
+        background: none;
         img {
             width: 40px;  
             height: 40px;  
         }
     }
 
+}
+
+.btn-back {
+    fill: aliceblue;
+    background-color: aliceblue;
 }

@@ -5,12 +5,8 @@
 
     color: #fff;
 
-    background-color:#2f53f5;
+    background-color:var(--navigate-button);
     border-radius: 6px;
-
-    &:hover {
-        background-color:#002fff;
-    }
     &:active {
         background-color:rgb(130, 129, 156);
     }

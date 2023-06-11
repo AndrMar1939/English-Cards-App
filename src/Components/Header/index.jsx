@@ -1,12 +1,14 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { getThemeSelector } from "../../Store/selectors";
 import { getCardsInLessons } from "../../Store/selectors";
+import ThemeButton from "../UI/ThemeButton";
 
 import "./style.scss";
 
 const Header = () => {
     const { pathname } = useLocation();
-
+    const theme = useSelector(getThemeSelector);
     const navigation = useNavigate();
     const cardsNumber = useSelector(getCardsInLessons);
 
@@ -14,13 +16,22 @@ const Header = () => {
     const cardsCounter = cardsNumber ? <h2>{cardsNumber} cards</h2> : null;
 
     const button =
-        pathname === "/lessons" ? null : (
+        pathname === "/lessons" ? (
+            <ThemeButton />
+        ) : (
             <button
+            className="btn-back"
                 onClick={() => {
                     navigation("/lessons");
                 }}
-            >
-                <img src="/assets/arrow-left.png" alt="arrow back" />
+            >   
+            {
+                theme === 'dark' ?
+                <img src="/assets/arrow-left-white.png" alt="arrow back" loading="lazy"/>
+                :
+                <img src="/assets/arrow-left.png" alt="arrow back" loading="lazy"/>
+            }
+
             </button>
         );
 

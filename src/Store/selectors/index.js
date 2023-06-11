@@ -1,18 +1,20 @@
-const getLoading = (state=>state.cardsStore.loading);
+const getLoading = (state => state.cardsSlice.loading);
 
-const getApiInfo = (state=>state.cardsStore.apiInfo);
+const getApiInfo = (state => state.cardsSlice.apiInfo);
 
-const getApiError = (state=>state.cardsStore.apiError);
+const getApiError = (state => state.cardsSlice.apiError);
 
-const getLessonsTitles = (state=>state.cardsStore.lessonsTitles);
+const getLessonsTitles = (state => state.cardsSlice.lessonsTitles);
 
-const getCardsInLessons = (state=>state.cardsStore.cardsInLesson);
+const getCardsInLessons = (state => state.cardsSlice.cardsInLesson);
 
-const getCards = (state=>state.cardsStore.cards);
+const getCards = (state => state.cardsSlice.cards);
 
-const getLessonMode = (state=>state.cardsStore.lessonMode);
+const getLessonMode = (state => state.cardsSlice.lessonMode);
+
+const getThemeSelector = (state => state.themeSlice.theme);
 
 
 
 
-export {getLoading, getApiInfo, getApiError, getCardsInLessons, getCards, getLessonsTitles, getLessonMode};
+export { getLoading, getApiInfo, getApiError, getCardsInLessons, getCards, getLessonsTitles, getLessonMode, getThemeSelector };

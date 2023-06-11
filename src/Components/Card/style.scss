@@ -24,7 +24,7 @@
 
     border: 1px #000 solid;
     border-radius: 10px;
-    background: linear-gradient( #585c96f1, #57596df1, #9e4b4bf3);
+    background: var(--card-front-gradient);
 
     text-align: center;
     h2 {
@@ -61,7 +61,7 @@
     backface-visibility: hidden;
     transform: rotateY(-180deg);
 
-    background: linear-gradient(#2d64bdee, #dace50ea)
+    background: var(--card-back-gradient)
 } 
 
 

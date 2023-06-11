@@ -1,12 +1,15 @@
 import {configureStore} from '@reduxjs/toolkit';
-import cardsStore from './slices/cardsSlice';
+import cardsSlice from './slices/cardsSlice';
+import themeSlice from './slices/themeSlice';
+import { setThemeToLocal } from './slices/themeSlice';
 
 
 const store = configureStore({
     reducer: { 
-        cardsStore
+        cardsSlice,
+        themeSlice
     },
-    middleware: getDefaultMiddleware => getDefaultMiddleware(),
+    middleware: getDefaultMiddleware => getDefaultMiddleware().concat(setThemeToLocal),
     devTools: true
 });
 

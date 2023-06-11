@@ -1,0 +1,116 @@
+/* normalize */
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+*,
+*:before,
+*:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+a:focus,
+a:active {
+    outline: none;
+}
+
+nav,
+footer,
+header,
+aside {
+    display: block;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+    font-size: 100%;
+    line-height: 1;
+    font-size: 14px;
+    -ms-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+input,
+button,
+textarea {
+    font-family: inherit;
+}
+
+input::-ms-clear {
+    display: none;
+}
+button {
+    cursor: pointer;
+}
+button::-moz-focus-inner {
+    padding: 0;
+    border: 0;
+}
+a,
+a:visited {
+    text-decoration: none;
+    color: #000000;
+}
+a:hover {
+    text-decoration: none;
+}
+ul li {
+    list-style: none;
+}
+img {
+    vertical-align: top;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-size: inherit;
+    font-weight: 400;
+}
+
+html {
+    font-family: "Roboto", sans-serif;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+/* variables */
+/* dark theme */
+html[data-theme='dark'] {
+    --main-background: #504d4d;
+    --header-gradient: linear-gradient(0.25turn, #191c1d, #676966, #582e00);
+    --header-bottom: #fff;
+    --text-color: #fff;
+    --lesson-icon-background:  #362e29ce;
+    --card-front-gradient:linear-gradient( #25273ff1, #2f303bf1, #5f2a2af3);
+    --card-back-gradient:linear-gradient(#142a52ee, #7e7522ea);
+    --navigate-button: #12226b;
+
+}
+
+
+/* light theme */
+html[data-theme='light'] {
+    --main-background:#ffffff;
+    --header-gradient: linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c);
+    --header-bottom: #000;
+    --text-color: #000;
+    --lesson-icon-background:  #ffffffe0;
+    --card-front-gradient:linear-gradient( #585c96f1, #57596df1, #9e4b4bf3);
+    --card-back-gradient:linear-gradient(#2d64bdee, #dace50ea);
+    --navigate-button: #2f53f5;
+}
+
+body{
+    background-color: var(--main-background);
+}
