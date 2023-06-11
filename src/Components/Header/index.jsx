@@ -24,7 +24,7 @@ const Header = () => {
             </button>
         );
 
-    // test header
+    // text header
     const arr = pathname.split(`/`);
     const text = arr[arr.length - 1];
     const headerText =

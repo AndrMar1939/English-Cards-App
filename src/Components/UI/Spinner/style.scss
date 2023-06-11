@@ -1,3 +1,11 @@
+.spinner-cover {
+    position: relative;
+    min-height: calc(100vh - 60px);
+
+
+    opacity: 0.8;
+    background-color: #fff;
+}
 .spinner {
     position: absolute;
     top: 50%;

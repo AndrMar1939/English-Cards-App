@@ -11,21 +11,6 @@ const initialState = {
     apiError: null,
 }
 
-// local storage middleware
-
-// export const itemsMiddleware = (store) => (next) => (action) => {
-//     switch (action.type) {
-//         case 'lessons/setLocal':
-//             localStorage.setItem('items', action.payload);
-//             break;
-//         default:
-//             break;
-//     }
-//     return next(action);
-// };
-
-// thunk
-
 
 export const getCardsThunk = createAsyncThunk(
     'getCards/get',
@@ -56,9 +41,6 @@ const cardsStore = createSlice({
     reducers: {
         isLoading: (state) => {
             state.loading = true;
-        },
-        isNotLoading: (state) => {
-            state.loading = false;
         },
         setCardsInLesson: (state, action) => {
             state.cardsInLesson = action.payload;
@@ -122,7 +104,6 @@ export default reducer;
 
 export const {
     isLoading,
-    isNotLoading,
     setCardsInLesson,
     setLessonMode,
 } = actions;
