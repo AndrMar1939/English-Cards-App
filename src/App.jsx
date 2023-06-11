@@ -6,7 +6,6 @@ import { useLayoutEffect } from "react";
 
 function App() {
     const theme = useSelector(getThemeSelector);
-
     // add attribute with current theme
     useLayoutEffect(() => {
         document.documentElement.setAttribute("data-theme", theme);

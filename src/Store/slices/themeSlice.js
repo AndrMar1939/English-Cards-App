@@ -1,8 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const isDark = window?.matchMedia('prefers-color-scheme: dark').matches;
+const isDark = window?.matchMedia('(prefers-color-scheme: dark)').matches;
 const initialTheme = isDark ? 'dark' : 'light';
-
 const initialState = {
     theme: localStorage.getItem('theme') || initialTheme,
 }
