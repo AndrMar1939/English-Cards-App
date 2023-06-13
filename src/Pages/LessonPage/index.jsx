@@ -2,15 +2,15 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
 
-
 import { setCardsInLesson, getCardsThunk } from "../../Store/slices/cardsSlice";
 import { getLoading, getApiError, getCards } from "../../Store/selectors";
 import LessonsBox from "../../Components/LessonsBox";
-import Card from "../../Components/Card";
+import MotionCard from "../../Components/Card";
 import Spinner from "../../Components/UI/Spinner";
 import ErrorMessage from "../../Components/UI/ErrorMessage";
 import ProgressBar from "../../Components/UI/ProgressBar";
 
+// component
 const LessonPage = () => {
     const dispatch = useDispatch();
     const { pathname } = useLocation();
@@ -32,7 +32,7 @@ const LessonPage = () => {
     }
 
     if (error) {
-        return <ErrorMessage message={error.message}/>;
+        return <ErrorMessage message={error.message} />;
     }
 
     // main render
@@ -40,9 +40,23 @@ const LessonPage = () => {
         <>
             <LessonsBox>
                 {cards?.map((item, index) => {
-                    return <Card key={index} item={item} />;
+                    return (
+                        <MotionCard
+                            initial={{
+                                y: "10%",
+                                opacity: 0,
+                            }}
+                            whileInView={{
+                                y: 0,
+                                opacity: 1,
+                            }}
+                            viewport={{ amount: 0.1 }}
+                            key={index}
+                            item={item}
+                        />
+                    );
                 })}
-                <ProgressBar/>
+                <ProgressBar />
             </LessonsBox>
         </>
     );

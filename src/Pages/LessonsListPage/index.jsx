@@ -2,14 +2,21 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-
-import {getLessonsTitlesThunk, setLessonMode} from "../../Store/slices/cardsSlice";
-import { getLoading, getLessonsTitles, getApiError} from "../../Store/selectors";
+import {
+    getLessonsTitlesThunk,
+    setLessonMode,
+} from "../../Store/slices/cardsSlice";
+import {
+    getLoading,
+    getLessonsTitles,
+    getApiError,
+} from "../../Store/selectors";
 import LessonsBox from "../../Components/LessonsBox";
-import LessonIcon from "../../Components/LessonIcon";
+import MotionLessonIcon from "../../Components/LessonIcon";
 import Spinner from "../../Components/UI/Spinner";
 import ErrorMessage from "../../Components/UI/ErrorMessage";
 
+// component
 const LessonsListPage = () => {
     const loading = useSelector(getLoading);
     const navigate = useNavigate();
@@ -20,38 +27,44 @@ const LessonsListPage = () => {
     const lessonsTitlesObj = useSelector(getLessonsTitles);
     const lessonsTitles = Object.keys(lessonsTitlesObj);
 
-
-    useEffect(()=>{
+    useEffect(() => {
         if (lessonsTitles.length === 0) {
-            dispatch(getLessonsTitlesThunk('/'));
+            dispatch(getLessonsTitlesThunk("/"));
         }
-        
-    }, [])
+    }, []);
 
     // handler button click
     const handleToLessons = (path) => {
         navigate("/lessons/" + path);
-        dispatch(setLessonMode('idle'))
+        dispatch(setLessonMode("idle"));
     };
     const handleToRepetition = (path) => {
         navigate("/lessons/" + path);
-        dispatch(setLessonMode('repetition'))
+        dispatch(setLessonMode("repetition"));
     };
 
-
     if (loading) {
-        return <Spinner/>
+        return <Spinner />;
     }
-    
+
     if (error) {
-        return <ErrorMessage message={error.message}/>;
+        return <ErrorMessage message={error.message} />;
     }
 
     return (
         <LessonsBox>
             {lessonsTitles?.map((item, index) => {
                 return (
-                    <LessonIcon
+                    <MotionLessonIcon
+                        initial={
+                            index % 2
+                                ? { x: "10%", opacity: 0 }
+                                : { x: "-10%", opacity: 0 }
+                        }
+                        animate={{
+                            x: 0,
+                            opacity: 1,
+                        }}
                         key={index}
                         category={item}
                         handleToLessons={handleToLessons}

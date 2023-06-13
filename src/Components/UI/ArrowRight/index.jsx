@@ -1,9 +1,12 @@
+import { forwardRef } from "react";
+import { motion } from "framer-motion";
 import "./style.scss";
 
-const ArrowRight = () => {
+const ArrowRight = forwardRef((props, ref) => {
     return (
-        <img className="arrow" src="/assets/arrow_green.png" alt="arrow" />
+        <img className="arrow" src="/assets/arrow_green.png" alt="arrow" ref={ref} />
     );
-};
+})
 
-export default ArrowRight;
+const MotionArrowRight = motion(ArrowRight);
+export default MotionArrowRight;
