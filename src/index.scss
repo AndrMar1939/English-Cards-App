@@ -95,6 +95,7 @@ html[data-theme='dark'] {
     --card-front-gradient:linear-gradient( #25273ff1, #2f303bf1, #5f2a2af3);
     --card-back-gradient:linear-gradient(#142a52ee, #7e7522ea);
     --navigate-button: #12226b;
+    --progress-bar: #208a00;
 
 }
 
@@ -109,6 +110,7 @@ html[data-theme='light'] {
     --card-front-gradient:linear-gradient( #585c96f1, #57596df1, #9e4b4bf3);
     --card-back-gradient:linear-gradient(#2d64bdee, #dace50ea);
     --navigate-button: #2f53f5;
+    --progress-bar: #3cff00;
 }
 
 body{

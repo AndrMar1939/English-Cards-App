@@ -59,7 +59,7 @@ const cardsSlice = createSlice({
                 state.loading = false;
                 state.apiError = action.payload.error;
                 state.cards = action.payload.data;
-                state.cardsInLesson = action.payload.data.length;
+                state.cardsInLesson = action.payload.data?.length;
 
             })
             .addCase(getCardsThunk.rejected, (state)=>{

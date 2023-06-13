@@ -1,10 +1,12 @@
 .header {
+    position: relative;
     position: sticky;
+
     top: 0;
     z-index: 99;
 
     width: 100%;
-    min-height: 60px;
+    height: 60px;
     padding: 10px;
 
     color: var(--text-color);
@@ -12,7 +14,6 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-
 
     background: var(--header-gradient);
     border-bottom: double 4px var(--header-bottom);
@@ -27,20 +28,21 @@
         font-size: 1.2rem;
         text-align: center;
     }
-    
+
     button {
-        width: 40px;  
-        height: 40px;   
+        width: 40px;
+        height: 40px;
         background: none;
         img {
-            width: 40px;  
-            height: 40px;  
+            width: 40px;
+            height: 40px;
         }
     }
-
+}
+.header-skeleton {
+    width: 40px;
+    font-size: 0;
 }
 
-.btn-back {
-    fill: aliceblue;
-    background-color: aliceblue;
-}
+
+

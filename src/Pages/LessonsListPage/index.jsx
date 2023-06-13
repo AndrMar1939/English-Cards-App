@@ -4,15 +4,17 @@ import { useNavigate } from "react-router-dom";
 
 
 import {getLessonsTitlesThunk, setLessonMode} from "../../Store/slices/cardsSlice";
-import { getLoading, getLessonsTitles} from "../../Store/selectors";
+import { getLoading, getLessonsTitles, getApiError} from "../../Store/selectors";
 import LessonsBox from "../../Components/LessonsBox";
 import LessonIcon from "../../Components/LessonIcon";
 import Spinner from "../../Components/UI/Spinner";
+import ErrorMessage from "../../Components/UI/ErrorMessage";
 
 const LessonsListPage = () => {
     const loading = useSelector(getLoading);
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const error = useSelector(getApiError);
 
     // define lessons titles like an array
     const lessonsTitlesObj = useSelector(getLessonsTitles);
@@ -40,6 +42,11 @@ const LessonsListPage = () => {
     if (loading) {
         return <Spinner/>
     }
+    
+    if (error) {
+        return <ErrorMessage message={error.message}/>;
+    }
+
     return (
         <LessonsBox>
             {lessonsTitles?.map((item, index) => {

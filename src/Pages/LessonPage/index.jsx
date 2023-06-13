@@ -2,18 +2,14 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
 
-import {
-    setCardsInLesson,
-    getCardsThunk,
-} from "../../Store/slices/cardsSlice";
-import {
-    getLoading,
-    getApiError,
-    getCards,
-} from "../../Store/selectors";
+
+import { setCardsInLesson, getCardsThunk } from "../../Store/slices/cardsSlice";
+import { getLoading, getApiError, getCards } from "../../Store/selectors";
 import LessonsBox from "../../Components/LessonsBox";
 import Card from "../../Components/Card";
 import Spinner from "../../Components/UI/Spinner";
+import ErrorMessage from "../../Components/UI/ErrorMessage";
+import ProgressBar from "../../Components/UI/ProgressBar";
 
 const LessonPage = () => {
     const dispatch = useDispatch();
@@ -21,7 +17,6 @@ const LessonPage = () => {
     const loading = useSelector(getLoading);
     const error = useSelector(getApiError);
     const cards = useSelector(getCards);
-
 
     // use effect for reload page
 
@@ -33,20 +28,23 @@ const LessonPage = () => {
     }, []);
 
     if (loading) {
-        return <Spinner/>
+        return <Spinner />;
     }
 
     if (error) {
-        return <h1>{error.message}</h1>
+        return <ErrorMessage message={error.message}/>;
     }
 
     // main render
     return (
-        <LessonsBox>
-            {cards?.map((item, index) => {
-                return <Card key={index} item={item} />;
-            })}
-        </LessonsBox>
+        <>
+            <LessonsBox>
+                {cards?.map((item, index) => {
+                    return <Card key={index} item={item} />;
+                })}
+                <ProgressBar/>
+            </LessonsBox>
+        </>
     );
 };
 
