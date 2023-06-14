@@ -48,7 +48,7 @@ const LessonsListPage = () => {
     }
 
     if (error) {
-        return <ErrorMessage message={error.message} />;
+        return <ErrorMessage message={error?.message} />;
     }
 
     return (

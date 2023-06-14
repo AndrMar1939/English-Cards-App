@@ -32,7 +32,7 @@ const LessonPage = () => {
     }
 
     if (error) {
-        return <ErrorMessage message={error.message} />;
+        return <ErrorMessage message={error?.message} />;
     }
 
     // main render

@@ -10,7 +10,7 @@ const store = configureStore({
         themeSlice
     },
     middleware: getDefaultMiddleware => getDefaultMiddleware().concat(setThemeToLocal),
-    devTools: true
+    devTools: process.env.NODE_ENV === 'development'
 });
 
 
