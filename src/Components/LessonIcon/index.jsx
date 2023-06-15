@@ -43,7 +43,7 @@ const LessonIcon = forwardRef(
                                 handler={handleToLessons}
                                 path={path}
                             >
-                                Learn
+                                Learning
                             </NavigateButton>
                         </div>
                     )}

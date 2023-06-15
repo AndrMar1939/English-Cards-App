@@ -71,8 +71,8 @@ const cardsSlice = createSlice({
             })
             .addCase(getApiInfoThunk.fulfilled, (state, action)=>{
                 state.loading = false;
-                state.apiError = action.payload.error;
-                state.apiInfo = action.payload.data;
+                state.apiError = action.payload?.error;
+                state.apiInfo = action.payload?.data;
 
             })
             .addCase(getApiInfoThunk.rejected, (state)=>{
@@ -85,12 +85,13 @@ const cardsSlice = createSlice({
             })
             .addCase(getLessonsTitlesThunk.fulfilled, (state, action)=>{
                 state.loading = false;
-                state.apiError = action.payload.error;
-                state.lessonsTitles = action.payload.data.definitions;
+                state.apiError = action.payload?.error;
+                state.lessonsTitles = action.payload?.data?.definitions;
 
             })
-            .addCase(getLessonsTitlesThunk.rejected, (state)=>{
+            .addCase(getLessonsTitlesThunk.rejected, (state, action)=>{
                 state.loading = false;
+                state.apiError = action.payload?.error;
 
             })
             // default

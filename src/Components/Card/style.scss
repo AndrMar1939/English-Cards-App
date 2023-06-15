@@ -1,5 +1,6 @@
 .card{
     position: relative;
+    cursor: pointer;
 
     display: flex;
     justify-content: center;
@@ -35,7 +36,7 @@
     }
 
     p {
-        font-size: 1.5rem;
+        font-size: 1.2rem;
         color: #fff;
         line-height: 1.2;
     }

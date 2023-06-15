@@ -7,12 +7,12 @@ const api = createClient(URL_SUPABASE, API_KEY);
 async function apiSupaBase(category) {
     let { data, error } = await api
         .from(category)
-        .select('*');  
-    return {data, error}
+        .select('*');
+    return { data, error }
 };
 
 
-export {apiSupaBase};
+export { apiSupaBase };
 
 
 
