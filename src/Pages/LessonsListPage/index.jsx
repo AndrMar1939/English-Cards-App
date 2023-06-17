@@ -26,7 +26,6 @@ const LessonsListPage = () => {
     // define lessons titles like an array
     const lessonsTitlesObj = useSelector(getLessonsTitles);
     const lessonsTitles = typeof lessonsTitlesObj === 'object' ? Object.keys(lessonsTitlesObj) : [];
-    console.log(typeof lessonsTitlesObj  === 'object')
     useEffect(() => {
         if (lessonsTitles.length === 0) {
             dispatch(getLessonsTitlesThunk("/"));

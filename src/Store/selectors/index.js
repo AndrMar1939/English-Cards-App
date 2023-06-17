@@ -1,7 +1,5 @@
 const getLoading = (state => state.cardsSlice.loading);
 
-const getApiInfo = (state => state.cardsSlice.apiInfo);
-
 const getApiError = (state => state.cardsSlice.apiError);
 
 const getLessonsTitles = (state => state.cardsSlice.lessonsTitles);
@@ -17,4 +15,4 @@ const getThemeSelector = (state => state.themeSlice.theme);
 
 
 
-export { getLoading, getApiInfo, getApiError, getCardsInLessons, getCards, getLessonsTitles, getLessonMode, getThemeSelector };
+export { getLoading, getApiError, getCardsInLessons, getCards, getLessonsTitles, getLessonMode, getThemeSelector };

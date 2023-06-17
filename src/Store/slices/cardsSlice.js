@@ -18,12 +18,6 @@ export const getCardsThunk = createAsyncThunk(
         return apiSupaBase(category);
     }
 );
-export const getApiInfoThunk = createAsyncThunk(
-    'getApiInfo/get',
-    (category) => {
-        return  apiSupaBase(category);
-    }
-);
 export const getLessonsTitlesThunk = createAsyncThunk(
     'getLessonsTitles/get',
     (category) => {
@@ -64,20 +58,6 @@ const cardsSlice = createSlice({
             })
             .addCase(getCardsThunk.rejected, (state)=>{
                 state.loading = false;
-            })
-            // api info
-            .addCase(getApiInfoThunk.pending, (state)=>{
-                state.loading = true;
-            })
-            .addCase(getApiInfoThunk.fulfilled, (state, action)=>{
-                state.loading = false;
-                state.apiError = action.payload?.error;
-                state.apiInfo = action.payload?.data;
-
-            })
-            .addCase(getApiInfoThunk.rejected, (state)=>{
-                state.loading = false;
-
             })
             // lessons title
             .addCase(getLessonsTitlesThunk.pending, (state)=>{

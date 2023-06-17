@@ -32,29 +32,33 @@ const Card = forwardRef(({ item, ...props }, ref) => {
     return (
         <div className="card" onClick={handleRotate} ref={ref}>
             <div className={`card__item front ${active ? "active" : ""}`}>
-                <h2
+                <button
+                    type="button"
                     onClick={(e) => {
                         playWord(e);
                     }}
                 >
-                    {item.word}
-                </h2>
+                    <h2>{item.word}</h2>
+                </button>
 
                 <div>
-                    <p
+                    <button
+                        type="button"
                         onClick={(e) => {
                             playSentenceOne(e);
                         }}
                     >
-                        {item.sentence}
-                    </p>
-                    <p
+                        <p>{item.sentence}</p>
+                    </button>
+
+                    <button
+                        type="button"
                         onClick={(e) => {
                             playSentenceTwo(e);
                         }}
                     >
-                        {item.sentenceTwo}
-                    </p>
+                        <p>{item.sentenceTwo}</p>
+                    </button>
                 </div>
             </div>
             <div className={`card__item back ${active ? "active" : ""}`}>
