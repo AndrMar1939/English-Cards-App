@@ -42,30 +42,34 @@ const Card = forwardRef(({ item, ...props }, ref) => {
                 </button>
 
                 <div>
-                    <button
-                        type="button"
-                        onClick={(e) => {
-                            playSentenceOne(e);
-                        }}
-                    >
-                        <p>{item.sentence}</p>
-                    </button>
+                    {item.sentence ? (
+                        <button
+                            type="button"
+                            onClick={(e) => {
+                                playSentenceOne(e);
+                            }}
+                        >
+                            <p>{item.sentence}</p>
+                        </button>
+                    ) : null}
 
-                    <button
-                        type="button"
-                        onClick={(e) => {
-                            playSentenceTwo(e);
-                        }}
-                    >
-                        <p>{item.sentenceTwo}</p>
-                    </button>
+                    {item.sentenceTwo ? (
+                        <button
+                            type="button"
+                            onClick={(e) => {
+                                playSentenceTwo(e);
+                            }}
+                        >
+                            <p>{item.sentenceTwo}</p>
+                        </button>
+                    ) : null}
                 </div>
             </div>
             <div className={`card__item back ${active ? "active" : ""}`}>
                 <h2>{item.uaWord}</h2>
                 <div>
-                    <p>{item.uaSentence}</p>
-                    <p>{item.uaSentenceTwo}</p>
+                    {item.uaSentence ? <p>{item.uaSentence}</p> : null}
+                    {item.uaSentenceTwo ? <p>{item.uaSentenceTwo}</p> : null}
                 </div>
             </div>
         </div>
