@@ -21,9 +21,6 @@ export const setThemeToLocal = (store) => (next) => (action) => {
     return next(action);
 };
 
-
-
-
 // slice
 const themeSlice = createSlice({
     name: 'theme',

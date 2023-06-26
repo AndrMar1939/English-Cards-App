@@ -48,6 +48,7 @@
     button {
         margin-bottom: 20px;
     }
+
     button:last-child {
         margin-bottom: 0;
     }
@@ -59,6 +60,42 @@
     backface-visibility: hidden;
     position: relative;
     z-index: 1;
+
+    h2:after {
+        content: "";
+        vertical-align: text-top;
+        display: inline-block;
+        width: 14px;
+        height: 12px;
+
+        margin-left: 4px;
+
+        border-radius: 4px;
+
+        background-image: url(/assets/speaker.png);
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-color: #ffffff;
+    }
+
+    p:after {
+        content: "";
+        vertical-align: text-top;
+        display: inline-block;
+        width: 14px;
+        height: 12px;
+
+        margin-left: 4px;
+
+        border-radius: 4px;
+
+        background-image: url(/assets/speaker.png);
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-color: #ffffff;
+    }
 }
 
 .card__item.back {
@@ -70,6 +107,14 @@
     transform: rotateY(-180deg);
 
     background: var(--card-back-gradient);
+
+    p {
+        margin-bottom: 20px;
+    }
+    
+    p:last-child {
+        margin-bottom: 0;
+    }
 }
 
 .card__item.back.active {

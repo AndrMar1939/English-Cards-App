@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
-import { getLessonMode } from "../../Store/selectors";
+import { useSelector, useDispatch } from "react-redux";
+import { getLessonMode, getPlayAudioSelector } from "../../Store/selectors";
+import { startedPlay, endedPlay } from "../../Store/slices/playAudioSlice";
 import { forwardRef } from "react";
 import { motion } from "framer-motion";
 import "./style.scss";
@@ -8,6 +9,8 @@ import "./style.scss";
 const Card = forwardRef(({ item, ...props }, ref) => {
     const mode = useSelector(getLessonMode);
     const [active, setActive] = useState(mode === "repetition" ? true : false);
+    const playAudio = useSelector(getPlayAudioSelector);
+    const dispatch = useDispatch();
     // rotate cards
     const handleRotate = () => {
         setActive(!active);
@@ -15,17 +18,26 @@ const Card = forwardRef(({ item, ...props }, ref) => {
     // sound
     const playWord = (e) => {
         e.stopPropagation();
+        if(playAudio) return;
         const audio = new Audio(item?.sound);
+        audio.addEventListener('play', ()=>{dispatch(startedPlay())})
+        audio.addEventListener('ended', ()=>{dispatch(endedPlay())})
         audio.autoplay = true;
     };
     const playSentenceOne = (e) => {
         e.stopPropagation();
+        if(playAudio) return;
         const audio = new Audio(item?.soundSentence);
+        audio.addEventListener('play', ()=>{dispatch(startedPlay())})
+        audio.addEventListener('ended', ()=>{dispatch(endedPlay())})
         audio.autoplay = true;
     };
     const playSentenceTwo = (e) => {
         e.stopPropagation();
+        if(playAudio) return;
         const audio = new Audio(item?.soundSentenceTwo);
+        audio.addEventListener('play', ()=>{dispatch(startedPlay())})
+        audio.addEventListener('ended', ()=>{dispatch(endedPlay())})
         audio.autoplay = true;
     };
 

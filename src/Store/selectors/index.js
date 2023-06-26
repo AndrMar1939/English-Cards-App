@@ -12,7 +12,9 @@ const getLessonMode = (state => state.cardsSlice.lessonMode);
 
 const getThemeSelector = (state => state.themeSlice.theme);
 
+const getPlayAudioSelector = (state => state.audioSlice.playAudio);
 
 
 
-export { getLoading, getApiError, getCardsInLessons, getCards, getLessonsTitles, getLessonMode, getThemeSelector };
+
+export { getLoading, getApiError, getCardsInLessons, getCards, getLessonsTitles, getLessonMode, getThemeSelector, getPlayAudioSelector };
